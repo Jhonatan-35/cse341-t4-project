@@ -21,8 +21,8 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
-    "swagger-autogen": "^2.23.7",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "swagger-autogen": "^2.23.7"
   },
   "author": "Your Name",
   "license": "ISC"

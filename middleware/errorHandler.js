@@ -1,5 +1,5 @@
-module.exports = (err, req, res, next) => {
-    const statusCode =  resStatusCode ? resStatusCode : 500;
+const errorHandler = (err, req, res, next) => {
+    const statusCode =  res.statusCode ? res.statusCode : 500;
     console.error(err.stack);
 
     switch (statusCode) {
@@ -44,3 +44,5 @@ module.exports = (err, req, res, next) => {
     }
 
 };
+
+module.exports = errorHandler;

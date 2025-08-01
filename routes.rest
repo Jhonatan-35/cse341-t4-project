@@ -16,6 +16,7 @@ Content-Type: application/json
     "birthday": "1990-01-01"
 }
 
+
 ###
 POST http://localhost:3000/api/auth/login
 Content-Type: application/json
@@ -25,17 +26,48 @@ Content-Type: application/json
     "password": "password123"
 }
 
+
+
+
+### User Endpoints
+GET http://localhost:3000/api/users/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OGQ0OTBlNmNlOWZhMjYzZjc5MGY5NSIsImVtYWlsIjoiam9obi5kb2VAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTQwOTIwMzIsImV4cCI6MTc1NDA5NTYzMn0.U0sgw8BmOxkt-Brx_VYTSwK_7SAvjwf1NT-bXw1de7M
+
+
+###     Update User
+PUT http://localhost:3000/api/users/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OGQ1MjQ5YjUxZGRhNzkzZTUzMDVjOSIsImVtYWlsIjoiam9obi5kb2VAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTQwOTIxMDcsImV4cCI6MTc1NDA5NTcwN30.mlgPk3P-ximu7UGMPcJRFrXnGNoGCZ69ZMInVChSmXs
+
+{
+    "firstname": "Paul",
+    "lastname": "O'Connor",
+    "username": "pauloconnor",
+    "email": "paul.oconnor@example.com",
+    "password": "password123",
+    "phone": "1234567890",
+    "birthday": "1990-01-01"
+}
+
+### Delete User
+DELETE http://localhost:3000/api/users/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OGQ1MjQ5YjUxZGRhNzkzZTUzMDVjOSIsImVtYWlsIjoiam9obi5kb2VAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTQwOTIxMDcsImV4cCI6MTc1NDA5NTcwN30.mlgPk3P-ximu7UGMPcJRFrXnGNoGCZ69ZMInVChSmXs
+
 ### Movie Endpoints
 GET http://localhost:3000/api/movies/
-Content-Type: application/json
+Content-Type: application/application/json
 
 ### Movie Details
-GET http://localhost:3000/api/movies/688d2a7d7ea2c06270d6b193
+GET http://localhost:3000/api/movies/688d327b201c6ce93804f255
 Content-Type: application/json
 
 ### Add Movie
 POST http://localhost:3000/api/movies/
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OGQ1MjQ5YjUxZGRhNzkzZTUzMDVjOSIsImVtYWlsIjoiam9obi5kb2VAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTQwOTIxMDcsImV4cCI6MTc1NDA5NTcwN30.mlgPk3P-ximu7UGMPcJRFrXnGNoGCZ69ZMInVChSmXs
+
 
 {
     "title": "Movie Title",
@@ -51,8 +83,9 @@ Content-Type: application/json
 }
 
 ### Update Movie
-PUT http://localhost:3000/api/movies/688d2a7d7ea2c06270d6b193
+PUT http://localhost:3000/api/movies/688d327b201c6ce93804f255
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OGQ1MjQ5YjUxZGRhNzkzZTUzMDVjOSIsImVtYWlsIjoiam9obi5kb2VAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTQwOTIxMDcsImV4cCI6MTc1NDA5NTcwN30.mlgPk3P-ximu7UGMPcJRFrXnGNoGCZ69ZMInVChSmXs
 
 {
     "title": "Updated Movie Title",
@@ -68,10 +101,6 @@ Content-Type: application/json
 }
 
 ### Delete Movie
-DELETE http://localhost:3000/api/movies/688d32873c2903998d825cbe
+DELETE http://localhost:3000/api/movies/688d44bdd64f9a7545e4e339
 Content-Type: application/json
-
-###
-GET http://localhost:3000/api/movies/688d2a7d7ea2c06270d6b193
-Content-Type: application/json
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OGQ0OTBlNmNlOWZhMjYzZjc5MGY5NSIsImVtYWlsIjoiam9obi5kb2VAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTQwOTIwMzIsImV4cCI6MTc1NDA5NTYzMn0.U0sgw8BmOxkt-Brx_VYTSwK_7SAvjwf1NT-bXw1de7M

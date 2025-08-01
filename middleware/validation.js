@@ -12,7 +12,7 @@ const validateRegistration = () => {
 // Validation for user login
 const validateLogin = () => {
     return [
-        body('username').isString().withMessage('Username is required'),
+        body('email').isString().withMessage('Email is required'),
         body('password').isString().withMessage('Password is required'),
     ];
 };
@@ -30,6 +30,13 @@ const validateUpdateUser = () => {
         param('id').isMongoId().withMessage('Invalid user ID'),
         body('username').optional().isString().isLength({ min: 3 }).withMessage('Username must be at least 3 characters long'),
         body('email').optional().isEmail().withMessage('Email must be valid'),
+    ];
+};
+
+// Validation for deleting user account
+const validateDeleteUser = () => {
+    return [
+        param('id').isMongoId().withMessage('Invalid user ID'),
     ];
 };
 
@@ -51,6 +58,11 @@ const movieValidation = {
         ];
     },
     getMovieDetails: () => {
+        return [
+            param('id').isMongoId().withMessage('Invalid movie ID'),
+        ];
+    },
+    deleteMovie: () => {
         return [
             param('id').isMongoId().withMessage('Invalid movie ID'),
         ];
@@ -130,6 +142,7 @@ module.exports = {
     validateLogin,
     getUserProfileValidation,
     validateUpdateUser,
+    validateDeleteUser,
     movieValidation,
     favoriteValidation,
     reviewValidation,
