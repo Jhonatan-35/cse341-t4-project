@@ -1,11 +1,17 @@
+// Let's us this connection from here in the server.js file
+const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 
-const connectDB = async () => {
+dotenv.config();
+
+const connectDb = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URI, {
+         const connect = await mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/movie-cse341", {
             useNewUrlParser: true,
-            useUnifiedTopology: true,
+            useUnifiedTopology: true
         });
+
+        console.log('Connected to DB', connect.connection.host, connect.connection.name);
         console.log('MongoDB connected successfully');
     } catch (error) {
         console.error('MongoDB connection failed:', error.message);
@@ -13,6 +19,4 @@ const connectDB = async () => {
     }
 };
 
-module.exports = {
-    connectDB,
-};
+module.exports = connectDb;

@@ -4,7 +4,7 @@
   "description": "A Node.js API for managing movies, users, favorites, reviews, and watchlists.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node --watch server.js",
     "dev": "nodemon server.js"
   },
   "dependencies": {

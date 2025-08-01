@@ -1,41 +1,30 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const authRoutes = require('./src/routes/authRoutes');
-const userRoutes = require('./src/routes/userRoutes');
-const movieRoutes = require('./src/routes/movieRoutes');
-const favoriteRoutes = require('./src/routes/favoriteRoutes');
-const reviewRoutes = require('./src/routes/reviewRoutes');
-const watchlistRoutes = require('./src/routes/watchlistRoutes');
-const errorHandler = require('./src/middleware/errorHandler');
+const dotenv = require('dotenv');
+const errorHandler = require('./middleware/errorHandler');
+const connectDb = require('./utils/db');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || 'localhost';
+
+// Load environment variables
+dotenv.config();
 
 // Middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
-// Database connection
-mongoose.connect('mongodb://localhost:27017/movieDB', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.error('MongoDB connection error:', err));
 
 // Routes
-app.use('/auth', authRoutes);
-app.use('/users', userRoutes);
-app.use('/movies', movieRoutes);
-app.use('/favorites', favoriteRoutes);
-app.use('/reviews', reviewRoutes);
-app.use('/watchlist', watchlistRoutes);
+app.use('/api', require('./routes/index.js'));
 
 // Error handling middleware
-app.use(errorHandler);
+// app.use(errorHandler);
 
+// Database connection
+connectDb();
 // Start the server
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on ${HOST}:${PORT}`);
 });

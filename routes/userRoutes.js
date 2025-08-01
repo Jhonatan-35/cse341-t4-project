@@ -6,12 +6,12 @@ const { authenticate } = require('../middleware/auth');
 const router = express.Router();
 
 // Get user profile
-router.get('/:id', authenticate, getUserProfile);
+// router.get('/:id', authenticate, getUserProfile);
 
-// Update user info
-router.put('/:id', authenticate, validateUser, updateUser);
+// // Update user info
+// router.put('/:id', authenticate, validateUser, updateUser);
 
-// Delete user account
-router.delete('/:id', authenticate, deleteUser);
+// // Delete user account
+// router.delete('/:id', authenticate, deleteUser);
 
 module.exports = router;
