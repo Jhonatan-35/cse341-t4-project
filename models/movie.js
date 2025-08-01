@@ -17,12 +17,12 @@ const movieSchema = new mongoose.Schema({
         type: [String],
         required: true,
     },
-    director: {
+    producer: {
         type: String,
         required: true,
     },
-    cast: {
-        type: [String],
+    country: {
+        type: String,
         required: true,
     },
     rating: {
@@ -30,10 +30,8 @@ const movieSchema = new mongoose.Schema({
         min: 0,
         max: 10,
     },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
+}, {
+    timestamps: true    
 });
 
 const Movie = mongoose.model('Movie', movieSchema);

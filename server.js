@@ -12,15 +12,29 @@ const HOST = process.env.HOST || 'localhost';
 dotenv.config();
 
 // Middleware
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Z-key");
+    res.setHeader('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+    next();
+});
 
 
 // Routes
-app.use('/api', require('./routes/index.js'));
+app.get('/', (req, res) => {
+    res.redirect('/api');
+});
+
+// Swagger Routes
+app.use('/', require('./routes/swagger'));
+
+app.use('/', require('./routes/index.js'));
 
 // Error handling middleware
-// app.use(errorHandler);
+app.use(errorHandler);
 
 // Database connection
 connectDb();

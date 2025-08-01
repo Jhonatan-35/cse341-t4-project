@@ -2,6 +2,7 @@ const Favorite = require('../models/favorite');
 
 // Get user's favorite movies
 exports.getFavorites = async (req, res) => {
+    // #swagger.tags = ['Favorites']
     try {
         const userId = req.params.id;
         const favorites = await Favorite.find({ userId });
@@ -13,6 +14,7 @@ exports.getFavorites = async (req, res) => {
 
 // Add a movie to favorites
 exports.addFavorite = async (req, res) => {
+    // #swagger.tags = ['Favorites']
     try {
         const userId = req.params.id;
         const { movieId } = req.body;
@@ -26,6 +28,7 @@ exports.addFavorite = async (req, res) => {
 
 // Remove a movie from favorites
 exports.removeFavorite = async (req, res) => {
+    // #swagger.tags = ['Favorites']
     try {
         const userId = req.params.id;
         const movieId = req.params.movieId;

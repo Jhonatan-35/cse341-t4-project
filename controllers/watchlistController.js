@@ -2,6 +2,7 @@ const Watchlist = require('../models/watchlist');
 
 // Get user's watchlist
 exports.getWatchlist = async (req, res) => {
+    // #swagger.tags = ['Watchlist']
     try {
         const userId = req.params.id;
         const watchlist = await Watchlist.find({ userId });
@@ -13,6 +14,7 @@ exports.getWatchlist = async (req, res) => {
 
 // Add movie to watchlist
 exports.addToWatchlist = async (req, res) => {
+    // #swagger.tags = ['Watchlist']
     try {
         const userId = req.params.id;
         const { movieId } = req.body;
@@ -25,6 +27,7 @@ exports.addToWatchlist = async (req, res) => {
 
 // Remove movie from watchlist
 exports.removeFromWatchlist = async (req, res) => {
+    // #swagger.tags = ['Watchlist']
     try {
         const userId = req.params.id;
         const movieId = req.params.movieId;

@@ -1,12 +1,18 @@
-const User = require('../models/user');
+const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 // Register a new user
 exports.register = async (req, res) => {
-    const { username, email, password } = req.body;
-
+    // #swagger.tags = ['Users']
     try {
+        const { username, email, password } = req.body;
+        if (!username || !email || !password) {
+            res.status(400);
+            throw new Error('All fields are required');
+        }
+
+
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({ username, email, password: hashedPassword });
         await newUser.save();
@@ -18,6 +24,7 @@ exports.register = async (req, res) => {
 
 // User login via OAuth (or fallback)
 exports.login = async (req, res) => {
+    // #swagger.tags = ['Users']
     const { email, password } = req.body;
 
     try {

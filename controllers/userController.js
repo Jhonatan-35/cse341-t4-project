@@ -1,7 +1,8 @@
-const User = require('../models/user');
+const User = require('../models/User');
 
 // Get user profile
 exports.getUserProfile = async (req, res) => {
+    // #swagger.tags = ['Users']
     try {
         const userId = req.params.id;
         const user = await User.findById(userId);
@@ -16,6 +17,7 @@ exports.getUserProfile = async (req, res) => {
 
 // Update user info
 exports.updateUser = async (req, res) => {
+    // #swagger.tags = ['Users']
     try {
         const userId = req.params.id;
         const updatedUser = await User.findByIdAndUpdate(userId, req.body, { new: true });
@@ -30,6 +32,7 @@ exports.updateUser = async (req, res) => {
 
 // Delete user account
 exports.deleteUser = async (req, res) => {
+    // #swagger.tags = ['Users']
     try {
         const userId = req.params.id;
         const deletedUser = await User.findByIdAndDelete(userId);
