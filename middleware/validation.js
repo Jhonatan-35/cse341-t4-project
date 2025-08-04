@@ -30,6 +30,10 @@ const validateUpdateUser = () => {
         param('id').isMongoId().withMessage('Invalid user ID'),
         body('username').optional().isString().isLength({ min: 3 }).withMessage('Username must be at least 3 characters long'),
         body('email').optional().isEmail().withMessage('Email must be valid'),
+        body('firstname').optional().isString().withMessage('First name must be a string'),
+        body('lastname').optional().isString().withMessage('Last name must be a string'),
+        body('phone').optional().isString().withMessage('Phone must be a string'),
+        body('birthday').optional().isDate().withMessage('Birthday must be a valid date'),
     ];
 };
 
@@ -50,7 +54,7 @@ const movieValidation = {
         ];
     },
     updateMovie: () => {
-                return [
+        return [
             param('id').isMongoId().withMessage('Invalid movie ID'),
             body('title').optional().isString().withMessage('Title must be a string'),
             body('description').optional().isString().withMessage('Description must be a string'),
@@ -80,7 +84,7 @@ const favoriteValidation = {
         return [
             param('id').isMongoId().withMessage('Invalid user ID'),
             body('movieId').isMongoId().withMessage('Invalid movie ID'),
-            ];
+        ];
     },
     removeFavorite: () => {
         return [
@@ -127,7 +131,7 @@ const watchlistValidation = {
         return [
             param('id').isMongoId().withMessage('Invalid user ID'),
             body('movieId').isMongoId().withMessage('Invalid movie ID'),
-            ];
+        ];
     },
     removeFromWatchlist: () => {
         return [
