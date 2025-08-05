@@ -36,9 +36,9 @@ exports.getMovieDetails = async (req, res, next) => {
 exports.addMovie = async (req, res) => {
     // #swagger.tags = ['Movies']
     try {
-        const { title, description, releaseDate, genre, rating, imageUrl } = req.body;
+        const { title, description, releaseDate, genre, rating, imageUrl, country, producer } = req.body;
 
-        const addMovie = await Movie.create({ title, description, releaseDate, genre, rating, imageUrl });
+        const addMovie = await Movie.create({ title, description, releaseDate, genre, rating, imageUrl, country, producer });
 
         if (!addMovie) {
             return res.status(404).json({ message: "Error adding movie" });
