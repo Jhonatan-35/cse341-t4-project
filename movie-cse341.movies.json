@@ -1,0 +1,300 @@
+[{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f255"
+  },
+  "title": "The Shawshank Redemption",
+  "director": "Frank Darabont",
+  "genre": "Drama",
+  "rating": 9.3,
+  "duration": 142,
+  "poster": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg",
+  "country": "USA",
+  "producer": "Niki Marvin",
+  "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+  "releaseDate": "1994-09-23"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f256"
+  },
+  "title": "The Godfather",
+  "director": "Francis Ford Coppola",
+  "genre": "Crime",
+  "rating": 9.2,
+  "duration": 175,
+  "poster": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+  "country": "USA",
+  "producer": "Albert S. Ruddy",
+  "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+  "releaseDate": "1972-03-24"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f257"
+  },
+  "title": "Parasite",
+  "director": "Bong Joon Ho",
+  "genre": "Thriller",
+  "rating": 8.6,
+  "duration": 132,
+  "poster": "https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg",
+  "country": "South Korea",
+  "producer": "Kwak Sin-ae",
+  "description": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+  "releaseDate": "2019-05-21"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f258"
+  },
+  "title": "Inception",
+  "director": "Christopher Nolan",
+  "genre": "Sci-Fi",
+  "rating": 8.8,
+  "duration": 148,
+  "poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg",
+  "country": "USA",
+  "producer": "Emma Thomas",
+  "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+  "releaseDate": "2010-07-16"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f259"
+  },
+  "title": "Spirited Away",
+  "director": "Hayao Miyazaki",
+  "genre": "Animation",
+  "rating": 8.6,
+  "duration": 125,
+  "poster": "https://m.media-amazon.com/images/M/MV5BMjlmZmI5MDctNDE2YS00YWE0LWE5ZWItZDBhYWQ0NTcxNWRhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
+  "country": "Japan",
+  "producer": "Toshio Suzuki",
+  "description": "During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits, and where humans are changed into beasts.",
+  "releaseDate": "2001-07-20"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f25a"
+  },
+  "title": "The Dark Knight",
+  "director": "Christopher Nolan",
+  "genre": "Action",
+  "rating": 9,
+  "duration": 152,
+  "poster": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg",
+  "country": "USA",
+  "producer": "Charles Roven",
+  "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+  "releaseDate": "2008-07-18"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f25b"
+  },
+  "title": "Pulp Fiction",
+  "director": "Quentin Tarantino",
+  "genre": "Crime",
+  "rating": 8.9,
+  "duration": 154,
+  "poster": "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+  "country": "USA",
+  "producer": "Lawrence Bender",
+  "description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+  "releaseDate": "1994-10-14"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f25c"
+  },
+  "title": "Mad Max: Fury Road",
+  "director": "George Miller",
+  "genre": "Action",
+  "rating": 8.1,
+  "duration": 120,
+  "poster": "https://m.media-amazon.com/images/M/MV5BN2EwM2I5OWMtMGQyMi00Zjg1LWJkNTctZTdjYTA4OGUwZjMyXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
+  "country": "Australia",
+  "producer": "Doug Mitchell",
+  "description": "In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in search of her homeland with the aid of a group of female prisoners, a psychotic worshiper, and a drifter named Max.",
+  "releaseDate": "2015-05-15"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f25d"
+  },
+  "title": "Blade Runner 2049",
+  "director": "Denis Villeneuve",
+  "genre": "Sci-Fi",
+  "rating": 8,
+  "duration": 164,
+  "poster": "https://m.media-amazon.com/images/M/MV5BNzA1Njg4NzYxOV5BMl5BanBnXkFtZTgwODk5NjU3MzI@._V1_.jpg",
+  "country": "USA",
+  "producer": "Andrew A. Kosove",
+  "description": "A young blade runner's discovery of a long-buried secret leads him to track down former blade runner Rick Deckard, who's been missing for thirty years.",
+  "releaseDate": "2017-10-06"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f25e"
+  },
+  "title": "Get Out",
+  "director": "Jordan Peele",
+  "genre": "Horror",
+  "rating": 7.7,
+  "duration": 104,
+  "poster": "https://m.media-amazon.com/images/M/MV5BMjUxMDQwNjcyNl5BMl5BanBnXkFtZTgwNzcwMzc0MTI@._V1_.jpg",
+  "country": "USA",
+  "producer": "Jason Blum",
+  "description": "A young African-American visits his white girlfriend's parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point.",
+  "releaseDate": "2017-02-24"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f25f"
+  },
+  "title": "The Grand Budapest Hotel",
+  "director": "Wes Anderson",
+  "genre": "Comedy",
+  "rating": 8.1,
+  "duration": 99,
+  "poster": "https://m.media-amazon.com/images/M/MV5BMzM5NjUxOTEyMl5BMl5BanBnXkFtZTgwNjEyMDM0MDE@._V1_.jpg",
+  "country": "USA",
+  "producer": "Wes Anderson",
+  "description": "A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotel's glorious years under an exceptional concierge.",
+  "releaseDate": "2014-03-28"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f260"
+  },
+  "title": "Whiplash",
+  "director": "Damien Chazelle",
+  "genre": "Drama",
+  "rating": 8.5,
+  "duration": 106,
+  "poster": "https://m.media-amazon.com/images/M/MV5BOTA5NDZlZGUtMjAxOS00YTRkLTkwYmMtYWQ0NWEwZDZiNjEzXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
+  "country": "USA",
+  "producer": "Jason Blum",
+  "description": "A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing to realize a student's potential.",
+  "releaseDate": "2014-10-15"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f261"
+  },
+  "title": "Interstellar",
+  "director": "Christopher Nolan",
+  "genre": "Sci-Fi",
+  "rating": 8.6,
+  "duration": 169,
+  "poster": "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
+  "country": "USA",
+  "producer": "Emma Thomas",
+  "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+  "releaseDate": "2014-11-07"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f262"
+  },
+  "title": "The Social Network",
+  "director": "David Fincher",
+  "genre": "Biography",
+  "rating": 7.7,
+  "duration": 120,
+  "poster": "https://m.media-amazon.com/images/M/MV5BOGUyZDUxZjEtMmIzMC00MzlmLTg4MGItZWJmMzBhZjE0Mjc1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
+  "country": "USA",
+  "producer": "Scott Rudin",
+  "description": "As Harvard student Mark Zuckerberg creates the social networking site that would become known as Facebook, he is sued by the twins who claimed he stole their idea, and by the co-founder who was later squeezed out of the business.",
+  "releaseDate": "2010-10-01"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f263"
+  },
+  "title": "La La Land",
+  "director": "Damien Chazelle",
+  "genre": "Musical",
+  "rating": 8,
+  "duration": 128,
+  "poster": "https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_.jpg",
+  "country": "USA",
+  "producer": "Fred Berger",
+  "description": "While navigating their careers in Los Angeles, a pianist and an actress fall in love while attempting to reconcile their aspirations for the future.",
+  "releaseDate": "2016-12-09"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f264"
+  },
+  "title": "The Revenant",
+  "director": "Alejandro G. Iñárritu",
+  "genre": "Adventure",
+  "rating": 8,
+  "duration": 156,
+  "poster": "https://m.media-amazon.com/images/M/MV5BMDE5OWMzM2QtOTU2ZS00NzAyLWI2MDEtOTRlYjIxZGM0OWRlXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_.jpg",
+  "country": "USA",
+  "producer": "Arnon Milchan",
+  "description": "A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear and left for dead by members of his own hunting team.",
+  "releaseDate": "2015-12-25"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f265"
+  },
+  "title": "Her",
+  "director": "Spike Jonze",
+  "genre": "Romance",
+  "rating": 8,
+  "duration": 126,
+  "poster": "https://m.media-amazon.com/images/M/MV5BMjA1Nzk0OTM2OF5BMl5BanBnXkFtZTgwNjU2NjEwMDE@._V1_.jpg",
+  "country": "USA",
+  "producer": "Megan Ellison",
+  "description": "In a near future, a lonely writer develops an unlikely relationship with an operating system designed to meet his every need.",
+  "releaseDate": "2013-12-18"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f266"
+  },
+  "title": "The Wolf of Wall Street",
+  "director": "Martin Scorsese",
+  "genre": "Biography",
+  "rating": 8.2,
+  "duration": 180,
+  "poster": "https://m.media-amazon.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_.jpg",
+  "country": "USA",
+  "producer": "Martin Scorsese",
+  "description": "Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.",
+  "releaseDate": "2013-12-25"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f267"
+  },
+  "title": "Dune",
+  "director": "Denis Villeneuve",
+  "genre": "Sci-Fi",
+  "rating": 8,
+  "duration": 155,
+  "poster": "https://m.media-amazon.com/images/M/MV5BN2FjNmEyNWMtYzM0ZS00NjIyLTg5YzYtYThlMGVjNzE1OGViXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg",
+  "country": "USA",
+  "producer": "Mary Parent",
+  "description": "Feature adaptation of Frank Herbert's science fiction novel about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy.",
+  "releaseDate": "2021-10-22"
+},
+{
+  "_id": {
+    "$oid": "688d327b201c6ce93804f268"
+  },
+  "title": "Everything Everywhere All at Once",
+  "director": "Daniel Kwan, Daniel Scheinert",
+  "genre": "Action",
+  "rating": 8.8,
+  "duration": 139,
+  "poster": "https://m.media-amazon.com/images/M/MV5BYTdiOTIyZTQtNmQ1OS00NjZlLWIyMTgtYzk5Y2M3ZDVmMDk1XkEyXkFqcGdeQXVyMTAzMDg4NzU0._V1_.jpg",
+  "country": "USA",
+  "producer": "Anthony Russo",
+  "description": "A middle-aged Chinese immigrant is swept up into an insane adventure in which she alone can save existence by exploring other universes connecting with the lives she could have led.",
+  "releaseDate": "2022-03-25"
+}]
