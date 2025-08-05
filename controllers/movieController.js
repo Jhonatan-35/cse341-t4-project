@@ -63,13 +63,12 @@ exports.addMovie = async (req, res) => {
         });
 
         if (!addMovie) {
-            res.status(404);
-            throw new Error({ "message": "Error adding movie", "error": error.message });
+            return res.status(404).json({ message: "Error adding movie" });
         }
         return res.status(201).json({ "message": "Movie added successfully", addMovie });
     } catch (error) {
         res.status(500);
-        throw new Error({ "message": "Error adding movie", "error": error.message });
+        return res.status(500).json({ message: "Error adding movie", error: error.message });
     }
 };
 
