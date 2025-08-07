@@ -15,7 +15,7 @@ router.use('/api/users', require('./userRoutes'));
 router.use('/api/movies', require('./movieRoutes'));
 
 // Favorite Routes
-router.use('/favorites', require('./favoriteRoutes'));
+router.use('/api/favorites', require('./favoriteRoutes'));
 
 // Review Routes
 // router.use('/api/reviews', require('./reviewRoutes'));
