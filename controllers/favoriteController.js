@@ -1,4 +1,4 @@
-const Favorite = require('../models/favorite');
+const Favorite = require('../models/favoriteModel');
 
 // Get user's favorite movies
 exports.getFavorites = async (req, res) => {
