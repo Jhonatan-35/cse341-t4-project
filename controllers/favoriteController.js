@@ -17,12 +17,40 @@ exports.addFavorite = async (req, res) => {
     // #swagger.tags = ['Favorites']
     try {
         const userId = req.params.id;
-        const { movieId } = req.body;
-        const favorite = new Favorite({ userId, movieId });
+        const { movieId, personalRating } = req.body;
+
+        if (personalRating === undefined) {
+            return res.status(400).json({ message: 'personalRating is required' });
+        }
+
+        const favorite = new Favorite({ userId, movieId, personalRating });
         await favorite.save();
         res.status(201).json(favorite);
     } catch (error) {
         res.status(500).json({ message: 'Error adding favorite', error });
+    }
+};
+
+// Update personal rating
+exports.updateFavorite = async (req, res) => {
+    // #swagger.tags = ['Favorites']
+    try {
+        const { id: userId, movieId } = req.params;
+        const { personalRating } = req.body;
+
+        const updatedFavorite = await Favorite.findOneAndUpdate(
+            { userId, movieId },
+            { $set: { personalRating } },
+            { new: true }
+        );
+
+        if (!updatedFavorite) {
+            return res.status(404).json({ message: 'Favorite not found' });
+        }
+
+        res.status(200).json(updatedFavorite);
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating favorite', error });
     }
 };
 
