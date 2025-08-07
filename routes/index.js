@@ -1,9 +1,6 @@
 const router = require('express').Router();
 
 
-// Favorite Routes
-// router.use('/favorites', require('./favoriteRoutes'));
-
 router.get('/api', (req, res) => {
     res.status(200).json({ message: 'Welcome to the Movie API' });
 });
@@ -16,6 +13,9 @@ router.use('/api/users', require('./userRoutes'));
 
 // Movie Routes
 router.use('/api/movies', require('./movieRoutes'));
+
+// Favorite Routes
+router.use('/favorites', require('./favoriteRoutes'));
 
 // Review Routes
 // router.use('/api/reviews', require('./reviewRoutes'));
