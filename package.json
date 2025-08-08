@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node --trace-deprecation --watch server.js",
     "dev": "nodemon server.js",
-    "swagger": "node swagger.js"
+    "swagger": "node swagger.js",
+    "test": "jest"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
@@ -21,6 +22,7 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "jest": "^30.0.5",
     "nodemon": "^2.0.4",
     "swagger-autogen": "^2.23.7"
   },
