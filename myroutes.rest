@@ -1,0 +1,144 @@
+### Welcome to the Movie API
+
+GET http://localhost:3000/
+
+### Auth Endpoints
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "firstname": "thandokuhle",
+    "lastname": "simelane",
+    "username": "thando",
+    "email": "thando@test1.com",
+    "password": "12345",
+    "phone": "987654321",
+    "birthday": "1999-05-05"
+}
+
+
+###
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "thando@test1.com",
+    "password": "12345"
+}
+
+
+
+
+### User Endpoints
+GET http://localhost:3000/api/users/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTI0NzliNzU1ZDc2NDNiZDM1M2NiYSIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDQxODA0NiwiZXhwIjoxNzU0NDIxNjQ2fQ.778Ym2Ril6D2OKpRhNUY9zRH1HyN2nzzFSTB7MRIbBo
+
+
+###     Update User
+PUT http://localhost:3000/api/users/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTI0NzliNzU1ZDc2NDNiZDM1M2NiYSIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDQxODA0NiwiZXhwIjoxNzU0NDIxNjQ2fQ.778Ym2Ril6D2OKpRhNUY9zRH1HyN2nzzFSTB7MRIbBo
+
+{
+    "firstname": "thandokuhle",
+    "lastname": "simelane",
+    "username": "thando",
+    "email": "thando@test1.com",
+    "phone": "9876543210",
+    "birthday": "1999-05-05T00:00:00.000Z"
+}
+
+### Delete User
+DELETE http://localhost:3000/api/users/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTI0YzY2NzU5YmFhM2E2YjQ0NDE4OCIsImVtYWlsIjoidGhhbmRvQHRlc3QyLmNvbSIsImlhdCI6MTc1NDQxODMwMywiZXhwIjoxNzU0NDIxOTAzfQ.rb481GF51MQk4J_mShPwiqTKt9yvhFjMD2fUMYJx5bg
+
+### Movie Endpoints
+GET http://localhost:3000/api/movies/
+Content-Type: application/application/json
+
+### Movie Details
+GET http://localhost:3000/api/movies/688d327b201c6ce93804f255
+Content-Type: application/json
+
+### Add Movie
+POST http://localhost:3000/api/movies/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTI0NzliNzU1ZDc2NDNiZDM1M2NiYSIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDQxODQ0MiwiZXhwIjoxNzU0NDIyMDQyfQ.zLFADmUTZ90kXxM12Q8W4dcQXnHxslBumgudBYwgTW4
+
+
+{
+    "title": "thando Movie Title",
+    "director": "Movie Director",
+    "genre": "Movie Genre",
+    "rating": 5,
+    "duration": 120,
+    "poster": "https://example.com/poster.jpg",
+    "country": "Movie Country",
+    "producer": "Movie Producer",
+    "description": "Movie Description",
+    "releaseDate": "2022-01-01"
+}
+
+### Update Movie
+PUT http://localhost:3000/api/movies/68925197a4fe3cad030d2fdf
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTI0NzliNzU1ZDc2NDNiZDM1M2NiYSIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDQxODQ0MiwiZXhwIjoxNzU0NDIyMDQyfQ.zLFADmUTZ90kXxM12Q8W4dcQXnHxslBumgudBYwgTW4
+
+{
+    "title": "Updated Movie Title",
+    "director": "Updated Movie Director",
+    "genre": "Updated Movie Genre",
+    "rating": 5,
+    "duration": 120,
+    "poster": "Updated Movie Poster",
+    "country": "Updated Movie Country",
+    "producer": "Updated Movie Producer",
+    "description": "Updated Movie Description",
+    "releaseDate": "2022-01-01"
+}
+
+### Delete Movie
+DELETE http://localhost:3000/api/movies/688d44bdd64f9a7545e4e339
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OGQ0OTBlNmNlOWZhMjYzZjc5MGY5NSIsImVtYWlsIjoiam9obi5kb2VAZXhhbXBsZS5jb20iLCJpYXQiOjE3NTQwOTIwMzIsImV4cCI6MTc1NDA5NTYzMn0.U0sgw8BmOxkt-Brx_VYTSwK_7SAvjwf1NT-bXw1de7M
+
+### Favorite Endpoints
+### Get favorites for user
+GET http://localhost:3000/api/favorites/68921bf7feddfa4a2243dab0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTIxYmY3ZmVkZGZhNGEyMjQzZGFiMCIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDYwMDQwOCwiZXhwIjoxNzU0NjA0MDA4fQ.9RvwKAHQKLhqq07C2U8pSkCath9kQ_ekiB7sInfKkYI
+
+### Add The Shawshank Redemption to favorites (local)
+POST http://localhost:3000/api/favorites/68921bf7feddfa4a2243dab0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTIxYmY3ZmVkZGZhNGEyMjQzZGFiMCIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDYwMDQwOCwiZXhwIjoxNzU0NjA0MDA4fQ.9RvwKAHQKLhqq07C2U8pSkCath9kQ_ekiB7sInfKkYI
+Content-Type: application/json
+
+{
+  "movieId": "688d327b201c6ce93804f255",
+  "personalRating": 9.5
+}
+
+### Add The Godfather to favorites (local)
+POST http://localhost:3000/api/favorites/68921bf7feddfa4a2243dab0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTIxYmY3ZmVkZGZhNGEyMjQzZGFiMCIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDYwMDQwOCwiZXhwIjoxNzU0NjA0MDA4fQ.9RvwKAHQKLhqq07C2U8pSkCath9kQ_ekiB7sInfKkYI
+Content-Type: application/json
+
+{
+  "movieId": "688d327b201c6ce93804f256",
+  "personalRating": 9.0
+}
+
+### Update personal rating for The Shawshank Redemption
+PUT http://localhost:3000/api/favorites/68921bf7feddfa4a2243dab0/688d327b201c6ce93804f255
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTIxYmY3ZmVkZGZhNGEyMjQzZGFiMCIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDYwMDQwOCwiZXhwIjoxNzU0NjA0MDA4fQ.9RvwKAHQKLhqq07C2U8pSkCath9kQ_ekiB7sInfKkYI
+Content-Type: application/json
+
+{
+  "personalRating": 9.8
+}
+
+
+### Remove The Godfather from favorites
+DELETE http://localhost:3000/api/favorites/68921bf7feddfa4a2243dab0/688d327b201c6ce93804f255
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTIxYmY3ZmVkZGZhNGEyMjQzZGFiMCIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDYwMDQwOCwiZXhwIjoxNzU0NjA0MDA4fQ.9RvwKAHQKLhqq07C2U8pSkCath9kQ_ekiB7sInfKkYI

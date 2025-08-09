@@ -36,40 +36,46 @@ exports.getMovieDetails = async (req, res, next) => {
 exports.addMovie = async (req, res) => {
     // #swagger.tags = ['Movies']
     try {
-        const {
-            title,
-            director,
-            genre,
-            rating,
-            duration,
-            poster,
-            country,
-            producer,
-            description,
-            releaseDate
-        } = req.body;
+        const { title, description, releaseDate, genre, rating, imageUrl, country, producer } = req.body;
 
-        const addMovie = await Movie.create({
-            title,
-            director,
-            genre,
-            rating,
-            duration,
-            poster,
-            country,
-            producer,
-            description,
-            releaseDate
-        });
+        const addMovie = await Movie.create({ title, description, releaseDate, genre, rating, imageUrl, country, producer });
 
         if (!addMovie) {
-            res.status(404);
-            throw new Error({ "message": "Error adding movie", "error": error.message });
+            return res.status(404).json({ message: "Error adding movie" });
+            return res.status(404).json({ message: "Error adding movie" });
         }
         return res.status(201).json({ "message": "Movie added successfully", addMovie });
     } catch (error) {
         res.status(500);
-        throw new Error({ "message": "Error adding movie", "error": error.message });
+        return res.status(500).json({ message: "Error adding movie", error: error.message });
+    }
+};
+
+// Update movie info
+exports.updateMovie = async (req, res) => {
+    // #swagger.tags = ['Movies']
+    const { id } = req.params;
+
+    try {
+        const { title, description, releaseDate, genre, rating, imageUrl } = req.body;
+        if (!title || !description || !releaseDate || !genre || !rating || !imageUrl) {
+            return res.status(400).json({ "message": "All fields are required" });
+        }
+
+        // check if movie exists
+        const updatedMovie = await Movie.findByIdAndUpdate(id, { title, description, releaseDate, genre, rating, imageUrl }, {
+            new: true,
+        });
+
+        if (!updatedMovie) {
+            return res.status(404).json({ "message": "Movie not found", "error": error.message });
+        }
+        return res.status(200).json({ "message": "Movie updated successfully", updatedMovie });
+    } catch (error) {
+        return res.status(400).json({
+            "message": "Error updating movie",
+            "error": error.message
+        });
     }
 };
 
