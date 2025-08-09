@@ -21,7 +21,11 @@
     "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/supertest": "^6.0.3",
+    "jest": "^30.0.5",
     "nodemon": "^2.0.4",
+    "supertest": "^7.1.4",
     "swagger-autogen": "^2.23.7"
   },
   "author": "Your Name",
