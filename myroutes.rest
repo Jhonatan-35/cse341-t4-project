@@ -106,12 +106,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OGQ0OTBlN
 
 ### Favorite Endpoints
 ### Get favorites for user
-GET http://localhost:3000/api/favorites/68921bf7feddfa4a2243dab0
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTIxYmY3ZmVkZGZhNGEyMjQzZGFiMCIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDYwMDQwOCwiZXhwIjoxNzU0NjA0MDA4fQ.9RvwKAHQKLhqq07C2U8pSkCath9kQ_ekiB7sInfKkYI
+GET http://localhost:3000/api/favorites/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTI0NzliNzU1ZDc2NDNiZDM1M2NiYSIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDc3MDg5NCwiZXhwIjoxNzU0Nzc0NDk0fQ._HJ33rdZaBUsmCXZKMo94VKRwRT_qbzWUBWuY7sbQGI
 
 ### Add The Shawshank Redemption to favorites (local)
-POST http://localhost:3000/api/favorites/68921bf7feddfa4a2243dab0
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTIxYmY3ZmVkZGZhNGEyMjQzZGFiMCIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDYwMDQwOCwiZXhwIjoxNzU0NjA0MDA4fQ.9RvwKAHQKLhqq07C2U8pSkCath9kQ_ekiB7sInfKkYI
+POST http://localhost:3000/api/favorites/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTI0NzliNzU1ZDc2NDNiZDM1M2NiYSIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDc3MDg5NCwiZXhwIjoxNzU0Nzc0NDk0fQ._HJ33rdZaBUsmCXZKMo94VKRwRT_qbzWUBWuY7sbQGI
 Content-Type: application/json
 
 {
@@ -120,8 +120,8 @@ Content-Type: application/json
 }
 
 ### Add The Godfather to favorites (local)
-POST http://localhost:3000/api/favorites/68921bf7feddfa4a2243dab0
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTIxYmY3ZmVkZGZhNGEyMjQzZGFiMCIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDYwMDQwOCwiZXhwIjoxNzU0NjA0MDA4fQ.9RvwKAHQKLhqq07C2U8pSkCath9kQ_ekiB7sInfKkYI
+POST http://localhost:3000/api/favorites/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTI0NzliNzU1ZDc2NDNiZDM1M2NiYSIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDc3MDg5NCwiZXhwIjoxNzU0Nzc0NDk0fQ._HJ33rdZaBUsmCXZKMo94VKRwRT_qbzWUBWuY7sbQGI
 Content-Type: application/json
 
 {
@@ -130,7 +130,7 @@ Content-Type: application/json
 }
 
 ### Update personal rating for The Shawshank Redemption
-PUT http://localhost:3000/api/favorites/68921bf7feddfa4a2243dab0/688d327b201c6ce93804f255
+PUT http://localhost:3000/api/favorites/688d327b201c6ce93804f255
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTIxYmY3ZmVkZGZhNGEyMjQzZGFiMCIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDYwMDQwOCwiZXhwIjoxNzU0NjA0MDA4fQ.9RvwKAHQKLhqq07C2U8pSkCath9kQ_ekiB7sInfKkYI
 Content-Type: application/json
 
@@ -140,8 +140,8 @@ Content-Type: application/json
 
 
 ### Remove The Godfather from favorites
-DELETE http://localhost:3000/api/favorites/68921bf7feddfa4a2243dab0/688d327b201c6ce93804f255
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTIxYmY3ZmVkZGZhNGEyMjQzZGFiMCIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDYwMDQwOCwiZXhwIjoxNzU0NjA0MDA4fQ.9RvwKAHQKLhqq07C2U8pSkCath9kQ_ekiB7sInfKkYI
+DELETE http://localhost:3000/api/favorites/688d327b201c6ce93804f255
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTI0NzliNzU1ZDc2NDNiZDM1M2NiYSIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDc3MDg5NCwiZXhwIjoxNzU0Nzc0NDk0fQ._HJ33rdZaBUsmCXZKMo94VKRwRT_qbzWUBWuY7sbQGI
 
 ### reviews Endpoints
 ### Get all reviews for a movie
