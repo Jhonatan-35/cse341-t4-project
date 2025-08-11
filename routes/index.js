@@ -31,7 +31,7 @@ router.use('/api/movies', require('./movieRoutes'));
 router.use('/api/favorites', require('./favoriteRoutes'));
 
 // Review Routes
-// router.use('/api/reviews', require('./reviewRoutes'));
+router.use('/api/movies', require('./reviewRoutes'));
 
 // Watchlist Routes
 // router.use('/api/watchlist', require('./watchlistRoutes'));

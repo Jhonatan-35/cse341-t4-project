@@ -4,7 +4,8 @@ const Favorite = require('../models/favoriteModel');
 exports.getFavorites = async (req, res) => {
     // #swagger.tags = ['Favorites']
     try {
-        const userId = req.params.id;
+        // const userId = req.params.id;
+        const userId = req.user._id;
         const favorites = await Favorite.find({ userId });
         res.status(200).json(favorites);
     } catch (error) {
@@ -16,7 +17,8 @@ exports.getFavorites = async (req, res) => {
 exports.addFavorite = async (req, res) => {
     // #swagger.tags = ['Favorites']
     try {
-        const userId = req.params.id;
+        // const userId = req.params.id;
+        const userId = req.user._id;
         const { movieId, personalRating } = req.body;
 
         if (personalRating === undefined) {
@@ -35,7 +37,9 @@ exports.addFavorite = async (req, res) => {
 exports.updateFavorite = async (req, res) => {
     // #swagger.tags = ['Favorites']
     try {
-        const { id: userId, movieId } = req.params;
+        const userId = req.user._id;
+        const movieId = req.params.movieId;
+        // const { id: userId, movieId } = req.params;
         const { personalRating } = req.body;
 
         const updatedFavorite = await Favorite.findOneAndUpdate(
@@ -58,7 +62,8 @@ exports.updateFavorite = async (req, res) => {
 exports.removeFavorite = async (req, res) => {
     // #swagger.tags = ['Favorites']
     try {
-        const userId = req.params.id;
+        // const userId = req.params.id;
+        const userId = req.user._id;
         const movieId = req.params.movieId;
         await Favorite.findOneAndDelete({ userId, movieId });
         res.status(204).send();
