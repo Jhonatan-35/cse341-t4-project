@@ -19,6 +19,8 @@ const HOST = process.env.HOST || 'localhost';
 // Middleware
 app.use(bodyParser.json());
 
+app.set('trust proxy', 1); // Trust the proxy from Render
+
 // Session config (with SQLite store)
 app.use(session({
     store: new SQLiteStore({
@@ -42,13 +44,15 @@ app.use(session({
 },
 }));
 
+
+
 // Passport
 app.use(passport.initialize());
 app.use(passport.session());
 
 // CORS
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: "https://cse341-t4-project-9zue.onrender.com",
     credentials: true
 }));
 
