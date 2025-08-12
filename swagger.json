@@ -344,7 +344,7 @@
         "tags": [
           "Movies"
         ],
-        "description": "",
+        "description": "Update an existing movie",
         "parameters": [
           {
             "name": "id",
@@ -360,28 +360,68 @@
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
                 "title": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "The Blind"
                 },
                 "description": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "A powerful story of redemption."
                 },
                 "releaseDate": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "2023-09-01"
                 },
                 "genre": {
-                  "example": "any"
+                  "type": "array",
+                  "example": [
+                    "Drama"
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
                 },
                 "rating": {
-                  "example": "any"
+                  "type": "number",
+                  "example": 8.5
                 },
                 "imageUrl": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "https://example.com/poster.jpg"
+                },
+                "director": {
+                  "type": "string",
+                  "example": "Andrew Hyatt"
+                },
+                "duration": {
+                  "type": "number",
+                  "example": 120
+                },
+                "country": {
+                  "type": "string",
+                  "example": "USA"
+                },
+                "producer": {
+                  "type": "string",
+                  "example": "Tori Kelly"
                 }
-              }
+              },
+              "required": [
+                "title",
+                "description",
+                "releaseDate",
+                "genre",
+                "rating",
+                "imageUrl",
+                "director",
+                "duration",
+                "country",
+                "producer"
+              ]
             }
           }
         ],
@@ -397,8 +437,16 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
       },
       "delete": {
         "tags": [

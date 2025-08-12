@@ -9,8 +9,8 @@ Content-Type: application/json
 {
     "firstname": "thandokuhle",
     "lastname": "simelane",
-    "username": "thando",
-    "email": "thando@test1.com",
+    "username": "thando5",
+    "email": "thando5@test.com",
     "password": "12345",
     "phone": "987654321",
     "birthday": "1999-05-05"
@@ -22,7 +22,7 @@ POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {
-    "email": "thando@test1.com",
+    "email": "thando5@test.com",
     "password": "12345"
 }
 
@@ -84,7 +84,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTI0NzliN
 ### Update Movie
 PUT http://localhost:3000/api/movies/68925197a4fe3cad030d2fdf
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OTI0NzliNzU1ZDc2NDNiZDM1M2NiYSIsImVtYWlsIjoidGhhbmRvQHRlc3QxLmNvbSIsImlhdCI6MTc1NDQxODQ0MiwiZXhwIjoxNzU0NDIyMDQyfQ.zLFADmUTZ90kXxM12Q8W4dcQXnHxslBumgudBYwgTW4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWFlMWFjNTVkMTE2ODkxNGM4ODc0NCIsImVtYWlsIjoidGhhbmRvNUB0ZXN0LmNvbSIsImlhdCI6MTc1NDk4MDgwMCwiZXhwIjoxNzU0OTg0NDAwfQ.-Mqz0l4WLYf2nNpORSUYGZ7HOtvG9CiVmPnLONBZBWo
 
 {
     "title": "Updated Movie Title",
