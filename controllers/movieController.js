@@ -15,7 +15,7 @@ exports.getMovies = async (req, res) => {
 };
 
 // Get details of a specific movie
-exports.getMovieDetails = async (req, res, next) => {
+exports.getMovieDetails = async (req, res) => {
     // #swagger.tags = ['Movies']
     const { id } = req.params;
     try {
