@@ -81,7 +81,7 @@ app.get('/', (req, res) => {
 
 app.get('/login', passport.authenticate('github', { scope: ['user:email'] }));
 
-app.get('/auth/github/callback', passport.authenticate('github', {
+app.get('/api/github/callback', passport.authenticate('github', {
     failureRedirect: '/api-docs',
     session: true
 }), (req, res) => {
