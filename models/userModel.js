@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     },
     lastname: {
         type: String,
-        required: true,
+        required: false,
         trim: true
     },
     username: {
@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
-        required: true,
+        required: false,
         trim: true
     },
     birthday: {
@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true
+        required: false
     },
 }, { timestamps: true });
 
