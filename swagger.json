@@ -344,7 +344,7 @@
         "tags": [
           "Movies"
         ],
-        "description": "",
+        "description": "Update an existing movie",
         "parameters": [
           {
             "name": "id",
@@ -360,28 +360,63 @@
           {
             "name": "body",
             "in": "body",
+            "required": true,
             "schema": {
               "type": "object",
               "properties": {
+                "director": {
+                  "type": "string",
+                  "example": "Updated Movie Director"
+                },
                 "title": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "releaseDate": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Updated Movie Title"
                 },
                 "genre": {
-                  "example": "any"
+                  "type": "string",
+                  "example": "Updated Movie Genre"
                 },
                 "rating": {
-                  "example": "any"
+                  "type": "number",
+                  "example": 5
                 },
-                "imageUrl": {
-                  "example": "any"
+                "duration": {
+                  "type": "number",
+                  "example": 120
+                },
+                "poster": {
+                  "type": "string",
+                  "example": "Updated Movie Poster"
+                },
+                "country": {
+                  "type": "string",
+                  "example": "Updated Movie Country"
+                },
+                "producer": {
+                  "type": "string",
+                  "example": "Updated Movie Producer"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Updated Movie Description"
+                },
+                "releaseDate": {
+                  "type": "string",
+                  "example": "2022-01-01"
                 }
-              }
+              },
+              "required": [
+                "director",
+                "title",
+                "genre",
+                "rating",
+                "duration",
+                "poster",
+                "country",
+                "producer",
+                "description",
+                "releaseDate"
+              ]
             }
           }
         ],
@@ -397,8 +432,16 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
-        }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
       },
       "delete": {
         "tags": [

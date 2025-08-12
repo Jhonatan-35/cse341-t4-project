@@ -53,31 +53,104 @@ exports.addMovie = async (req, res) => {
 
 // Update movie info
 exports.updateMovie = async (req, res) => {
-    // #swagger.tags = ['Movies']
-    const { id } = req.params;
-
-    try {
-        const { title, description, releaseDate, genre, rating, imageUrl } = req.body;
-        if (!title || !description || !releaseDate || !genre || !rating || !imageUrl) {
-            return res.status(400).json({ "message": "All fields are required" });
-        }
-
-        // check if movie exists
-        const updatedMovie = await Movie.findByIdAndUpdate(id, { title, description, releaseDate, genre, rating, imageUrl }, {
-            new: true,
-        });
-
-        if (!updatedMovie) {
-            return res.status(404).json({ "message": "Movie not found", "error": error.message });
-        }
-        return res.status(200).json({ "message": "Movie updated successfully", updatedMovie });
-    } catch (error) {
-        return res.status(400).json({
-            "message": "Error updating movie",
-            "error": error.message
-        });
+  // #swagger.tags = ['Movies']
+  // #swagger.description = 'Update an existing movie'
+  // #swagger.security = [{ "Bearer": [] }]
+  /* #swagger.parameters['body'] = {
+      in: 'body',
+      required: true,
+      schema: {
+        $director: "Updated Movie Director",
+        $title: "Updated Movie Title",
+        $genre: "Updated Movie Genre",
+        $rating: 5,
+        $duration: 120,
+        $poster: "Updated Movie Poster",
+        $country: "Updated Movie Country",
+        $producer: "Updated Movie Producer",
+        $description: "Updated Movie Description",
+        $releaseDate: "2022-01-01"
     }
+  } */
+
+  const { id } = req.params;
+  const {
+    title,
+    description,
+    releaseDate,
+    genre,
+    rating,
+    imageUrl,
+    director,
+    duration,
+    country,
+    producer
+  } = req.body;
+
+  // Validate required fields
+  if (
+    !title || !description || !releaseDate || !genre || !rating || !imageUrl ||
+    !director || !duration || !country || !producer
+  ) {
+    return res.status(400).json({ message: 'All fields are required' });
+  }
+
+  try {
+    const updatedMovie = await Movie.findByIdAndUpdate(
+      id,
+      {
+        title,
+        description,
+        releaseDate,
+        genre,
+        rating,
+        imageUrl,
+        director,
+        duration,
+        country,
+        producer
+      },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedMovie) {
+      return res.status(404).json({ message: 'Movie not found' });
+    }
+
+    res.status(200).json({ message: 'Movie updated successfully', updatedMovie });
+  } catch (error) {
+    res.status(500).json({ message: 'Error updating movie', error: error.message });
+  }
 };
+
+
+// // Update movie info
+// exports.updateMovie = async (req, res) => {
+//     // #swagger.tags = ['Movies']
+//     const { id } = req.params;
+
+//     try {
+//         const { title, description, releaseDate, genre, rating, imageUrl } = req.body;
+//         if (!title || !description || !releaseDate || !genre || !rating || !imageUrl) {
+//             return res.status(400).json({ "message": "All fields are required" });
+//         }
+
+//         // check if movie exists
+//         const updatedMovie = await Movie.findByIdAndUpdate(id, { title, description, releaseDate, genre, rating, imageUrl }, {
+//             new: true,
+//         });
+
+//         if (!updatedMovie) {
+//             return res.status(404).json({ "message": "Movie not found", "error": error.message });
+//         }
+//         return res.status(200).json({ "message": "Movie updated successfully", updatedMovie });
+//     } catch (error) {
+//         return res.status(400).json({
+//             "message": "Error updating movie",
+//             "error": error.message
+//         });
+//     }
+// };
 
 // Update movie info
 exports.updateMovie = async (req, res) => {
