@@ -28,11 +28,18 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    // cookie: {
+    //     secure: false, 
+    //     httpOnly: true,
+    //     maxAge: 1000 * 60 * 60,
+    // }
+
     cookie: {
-        secure: false, // HTTPS only if true
-        httpOnly: true,
-        maxAge: 1000 * 60 * 60, // 1 hour
-    }
+    secure: true, // IMPORTANT: Now that you are on HTTPS
+    httpOnly: true,
+    maxAge: 1000 * 60 * 60, // 1 hour
+    sameSite: 'lax' // Recommended for security
+},
 }));
 
 // Passport
