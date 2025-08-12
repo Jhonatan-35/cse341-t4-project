@@ -9,14 +9,24 @@ router.get('/api', (req, res) => {
 // router.use('/api/auth', require('./authRoutes'));
 
 // Define routes for authentication
-router.get('/login', passport.authenticate('github'));
+// router.get('/login', passport.authenticate('github'));
+
+// router.get('/logout', (req, res, next) => {
+//     req.logout(err => {
+//         if (err) {
+//             return next(err);
+//         };
+//         res.redirect('/');
+//     });
+// });
 
 router.get('/logout', (req, res, next) => {
     req.logout(err => {
-        if (err) {
-            return next(err);
-        };
-        res.redirect('/');
+        if (err) return next(err);
+        req.session.destroy(() => {
+            res.clearCookie('connect.sid');
+            res.redirect('/');
+        });
     });
 });
 

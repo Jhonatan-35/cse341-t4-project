@@ -8,35 +8,54 @@ const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
 const session = require('express-session');
 const User = require('./models/userModel');
+const SQLiteStore = require('connect-sqlite3')(session);
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
 
-// Load environment variables
-dotenv.config();
-
 // Middleware
 app.use(bodyParser.json());
+
+// Session config (with SQLite store)
 app.use(session({
-    secret: process.env.SECRET,
+    store: new SQLiteStore({
+        db: 'sessions.sqlite',
+        dir: './db',
+    }),
+    secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false,
+    cookie: {
+        secure: false, // HTTPS only if true
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60, // 1 hour
+    }
 }));
+
+// Passport
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors({
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    origin: "*"
-}));
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Z-key");
-    res.setHeader("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
-    next();
-});
 
-// GitHub OAuth Strategy (email only)
+// CORS
+app.use(cors({
+    origin: "http://localhost:3000",
+    credentials: true
+}));
+
+// Preflight handling
+// app.use((req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+//     res.header("Access-Control-Allow-Credentials", "true");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Z-key");
+//     res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
+//     if (req.method === "OPTIONS") return res.sendStatus(200);
+//     next();
+// });
+
+// GitHub OAuth
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID,
     clientSecret: process.env.GITHUB_CLIENT_SECRET,
@@ -50,7 +69,14 @@ passport.use(new GitHubStrategy({
         }
 
         let user = await User.findOne({ email });
-        if (!user) {
+
+        if (user) {
+            // User already exists, update their profile information if needed
+            // For example, update the username
+            user.username = profile.username || 'unknown';
+            await user.save();
+        } else {
+            // User does not exist, create a new one
             user = await User.create({
                 email,
                 username: profile.username || 'unknown',
@@ -60,46 +86,81 @@ passport.use(new GitHubStrategy({
                 birthday: ''
             });
         }
-
+        
         return done(null, user);
     } catch (err) {
         return done(err);
     }
 }));
 
-passport.serializeUser((user, done) => {
-    done(null, user);
+passport.serializeUser((user, done) => done(null, user._id));
+passport.deserializeUser(async (id, done) => {
+    try {
+        const user = await User.findById(id);
+        done(null, user);
+    } catch (err) {
+        done(err);
+    }
 });
-passport.deserializeUser((user, done) => {
-    done(null, user);
+
+passport.deserializeUser(async (id, done) => {
+    try {
+        console.log('Deserializing user with ID:', id);
+        const user = await User.findById(id);
+        if (user) {
+            console.log('User found in DB:', user.email);
+            done(null, user);
+        } else {
+            console.log('User not found in DB for ID:', id);
+            done(null, null); // Pass null for no user
+        }
+    } catch (err) {
+        console.error('Error during deserialization:', err);
+        done(err);
+    }
 });
 
 // Routes
+// app.get('/', (req, res) => {
+//     res.send(req.user ? `Logged in as ${req.user.firstname}` : "Logged out");
+// });
+
 app.get('/', (req, res) => {
-    res.send(req.session.user ? `Logged in as ${req.session.user.firstname}` : "Logged out");
+    console.log('Accessing root route. Is user authenticated?', !!req.user);
+    if (req.user) {
+        console.log('Authenticated user:', req.user.firstname);
+    }
+    res.send(req.user ? `Logged in as ${req.user.firstname}` : "Logged out");
 });
 
 app.get('/login', passport.authenticate('github', { scope: ['user:email'] }));
+
+// app.get('/api/github/callback', passport.authenticate('github', {
+//     failureRedirect: '/api-docs',
+//     session: true
+// }), (req, res) => res.redirect('/'));
 
 app.get('/api/github/callback', passport.authenticate('github', {
     failureRedirect: '/api-docs',
     session: true
 }), (req, res) => {
-    req.session.user = req.user;
+    console.log('GitHub authentication successful!');
+    console.log('User serialized:', req.user._id);
     res.redirect('/');
 });
 
+// Route imports (unchanged from old)
 app.use('/', require('./routes/swagger'));
 app.use('/', require('./routes/index'));
-app.use('/api/users', require('./routes/userRoutes')); // Profile routes only
+app.use('/api/users', require('./routes/userRoutes'));
 
 // Error handling
 app.use(errorHandler);
-app.use((req, res, next) => {
+app.use((req, res) => {
     res.status(404).json({ message: 'Not Found' });
 });
 
-// Connect to DB and start server
+// Start server
 connectDb();
 app.listen(PORT, () => {
     console.log(`Server is running on ${HOST}:${PORT}`);
