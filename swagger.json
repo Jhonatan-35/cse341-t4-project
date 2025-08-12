@@ -364,63 +364,58 @@
             "schema": {
               "type": "object",
               "properties": {
+                "director": {
+                  "type": "string",
+                  "example": "Updated Movie Director"
+                },
                 "title": {
                   "type": "string",
-                  "example": "The Blind"
-                },
-                "description": {
-                  "type": "string",
-                  "example": "A powerful story of redemption."
-                },
-                "releaseDate": {
-                  "type": "string",
-                  "example": "2023-09-01"
+                  "example": "Updated Movie Title"
                 },
                 "genre": {
-                  "type": "array",
-                  "example": [
-                    "Drama"
-                  ],
-                  "items": {
-                    "type": "string"
-                  }
+                  "type": "string",
+                  "example": "Updated Movie Genre"
                 },
                 "rating": {
                   "type": "number",
-                  "example": 8.5
-                },
-                "imageUrl": {
-                  "type": "string",
-                  "example": "https://example.com/poster.jpg"
-                },
-                "director": {
-                  "type": "string",
-                  "example": "Andrew Hyatt"
+                  "example": 5
                 },
                 "duration": {
                   "type": "number",
                   "example": 120
                 },
+                "poster": {
+                  "type": "string",
+                  "example": "Updated Movie Poster"
+                },
                 "country": {
                   "type": "string",
-                  "example": "USA"
+                  "example": "Updated Movie Country"
                 },
                 "producer": {
                   "type": "string",
-                  "example": "Tori Kelly"
+                  "example": "Updated Movie Producer"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Updated Movie Description"
+                },
+                "releaseDate": {
+                  "type": "string",
+                  "example": "2022-01-01"
                 }
               },
               "required": [
+                "director",
                 "title",
-                "description",
-                "releaseDate",
                 "genre",
                 "rating",
-                "imageUrl",
-                "director",
                 "duration",
+                "poster",
                 "country",
-                "producer"
+                "producer",
+                "description",
+                "releaseDate"
               ]
             }
           }

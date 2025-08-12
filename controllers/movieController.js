@@ -60,17 +60,17 @@ exports.updateMovie = async (req, res) => {
       in: 'body',
       required: true,
       schema: {
-        $title: 'The Blind',
-        $description: 'A powerful story of redemption.',
-        $releaseDate: '2023-09-01',
-        $genre: ['Drama'],
-        $rating: 8.5,
-        $imageUrl: 'https://example.com/poster.jpg',
-        $director: 'Andrew Hyatt',
+        $director: "Updated Movie Director",
+        $title: "Updated Movie Title",
+        $genre: "Updated Movie Genre",
+        $rating: 5,
         $duration: 120,
-        $country: 'USA',
-        $producer: 'Tori Kelly'
-      }
+        $poster: "Updated Movie Poster",
+        $country: "Updated Movie Country",
+        $producer: "Updated Movie Producer",
+        $description: "Updated Movie Description",
+        $releaseDate: "2022-01-01"
+    }
   } */
 
   const { id } = req.params;
