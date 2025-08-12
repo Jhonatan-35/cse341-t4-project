@@ -6,11 +6,11 @@
     "version": "1.0.0"
   },
   "host": [
-    "cse341-t4-project.onrender.com"
+    "localhost:3000"
   ],
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/api": {
@@ -49,19 +49,9 @@
           "Users"
         ],
         "description": "",
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
           },
           "401": {
             "description": "Unauthorized"
@@ -81,25 +71,11 @@
         "description": "",
         "parameters": [
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
             "name": "body",
             "in": "body",
             "schema": {
               "type": "object",
               "properties": {
-                "username": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "firstname": {
-                  "example": "any"
-                },
                 "lastname": {
                   "example": "any"
                 },
@@ -117,9 +93,6 @@
           "200": {
             "description": "OK"
           },
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           },
@@ -136,19 +109,9 @@
           "Users"
         ],
         "description": "",
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
           },
           "401": {
             "description": "Unauthorized"
@@ -400,19 +363,9 @@
           "Favorites"
         ],
         "description": "",
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string"
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
           },
           "401": {
             "description": "Unauthorized"
@@ -428,11 +381,6 @@
         ],
         "description": "",
         "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string"
-          },
           {
             "name": "body",
             "in": "body",
@@ -479,11 +427,6 @@
             "type": "string"
           },
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
             "name": "body",
             "in": "body",
             "schema": {
@@ -499,9 +442,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
           },
           "401": {
             "description": "Unauthorized"
@@ -525,19 +465,11 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string"
           }
         ],
         "responses": {
           "204": {
             "description": "No Content"
-          },
-          "400": {
-            "description": "Bad Request"
           },
           "401": {
             "description": "Unauthorized"
@@ -587,11 +519,6 @@
             "type": "string"
           },
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
             "name": "body",
             "in": "body",
             "required": true,
@@ -617,9 +544,6 @@
         "responses": {
           "201": {
             "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
           },
           "401": {
             "description": "Unauthorized"
@@ -647,11 +571,6 @@
             "type": "string"
           },
           {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string"
-          },
-          {
             "name": "body",
             "in": "body",
             "schema": {
@@ -670,9 +589,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
           },
           "401": {
             "description": "Unauthorized"
@@ -696,19 +612,11 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "type": "string"
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
           },
           "401": {
             "description": "Unauthorized"
