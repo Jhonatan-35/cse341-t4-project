@@ -29,6 +29,7 @@ app.use(express.json());
 
 
 // Session config (using a persistent Mongo store)
+// Session config (using a persistent Mongo store)
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -40,11 +41,11 @@ app.use(session({
     cookie: {
         secure: true,      // Must be true for HTTPS on Render
         httpOnly: true,    // Good practice
-        sameSite: 'none',  // THIS IS THE FIX for cross-site requests
+        sameSite: 'none',  // This is for cross-site requests
+        domain: process.env.APP_DOMAIN, // This is to access the cookie in the frontend
         maxAge: 1000 * 60 * 60 * 24 // 24 hours
     }
 }));
-
 // Passport
 app.use(passport.initialize());
 app.use(passport.session());
