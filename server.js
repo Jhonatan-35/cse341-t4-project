@@ -14,20 +14,22 @@ dotenv.config();
 
 console.log('Using GITHUB_CALLBACK_URL:', process.env.GITHUB_CALLBACK_URL);
 
-const app = express(); // The app object is created here
+const app = express();
 
-app.set('trust proxy', 1); 
+app.set('trust proxy', 1);
 
 const PORT = process.env.PORT || 3000;
-const HOST = process.env.HOST || 'localhost'
-
-
+const HOST = process.env.HOST || 'localhost';
 
 // Middleware
 app.use(bodyParser.json());
 app.use(express.json());
 
-
+// CORS should be placed before session and passport middleware
+app.use(cors({
+    origin: ["https://cse341-t4-project-9zue.onrender.com"],
+    credentials: true
+}));
 
 // Session config (using a persistent Mongo store)
 app.use(session({
@@ -39,22 +41,18 @@ app.use(session({
         collectionName: 'sessions'
     }),
     cookie: {
-        secure: true,      // Must be true for HTTPS on Render
-        httpOnly: true,    // Good practice
-        sameSite: 'none',  // This is for cross-site requests
-        domain: process.env.APP_DOMAIN, // This is to access the cookie in the frontend
+        secure: true,
+        httpOnly: true,
+        sameSite: 'none',
+        // 'domain' can cause issues on some platforms. 
+        // domain: process.env.APP_DOMAIN,
         maxAge: 1000 * 60 * 60 * 24 // 24 hours
     }
 }));
-// Passport
+
+// Passport initialization
 app.use(passport.initialize());
 app.use(passport.session());
-
-// CORS
-app.use(cors({
-    origin: ["https://cse341-t4-project.onrender.com"],
-    credentials: true
-}));
 
 // GitHub OAuth
 passport.use(new GitHubStrategy({
@@ -65,21 +63,14 @@ passport.use(new GitHubStrategy({
 }, async (accessToken, refreshToken, profile, done) => {
     try {
         const email = profile.emails?.[0]?.value;
-        console.log('GitHub profile email:', email);
-
         if (!email) {
-            console.error('Error: Email not available from GitHub');
             return done(new Error('Email not available from GitHub'));
         }
-
         let user = await User.findOne({ email });
-        console.log('User found in DB:', user);
-
         if (user) {
             user.username = profile.username || 'unknown';
-            user.firstname = profile.displayName || profile.username || 'GitHub User'; // Corrected
+            user.firstname = profile.displayName || profile.username || 'GitHub User';
             await user.save();
-            console.log('Existing user updated:', user);
         } else {
             user = await User.create({
                 email,
@@ -89,54 +80,32 @@ passport.use(new GitHubStrategy({
                 phone: '',
                 birthday: ''
             });
-            console.log('New user created:', user);
         }
-
         if (!user || !user._id) {
-            console.error('Fatal Error: User object is invalid or missing _id', user);
             return done(new Error('Invalid user object returned from database.'));
         }
-
         return done(null, user);
-
     } catch (err) {
-        console.error('Error during GitHub authentication:', err);
         return done(err);
     }
 }));
 
-
 // Passport Serialization and Deserialization
 passport.serializeUser((user, done) => {
-    console.log('Serializing user with ID:', user._id);
     done(null, user._id);
 });
 
 passport.deserializeUser(async (id, done) => {
     try {
-        console.log('Deserializing user with ID:', id);
         const user = await User.findById(id);
-        
-        if (user) {
-            console.log('User found in deserializeUser:', user._id);
-        } else {
-            console.log('User NOT found in deserializeUser for ID:', id);
-        }
-
         done(null, user);
     } catch (err) {
-        console.error('Error during deserialization:', err);
         done(err);
     }
 });
 
-
 // Routes
 app.get('/', (req, res) => {
-    console.log('Accessing root route. Is user authenticated?', !!req.user);
-    if (req.user) {
-        console.log('Authenticated user:', req.user.firstname);
-    }
     res.send(req.user ? `Logged in as ${req.user.firstname}` : "Logged out");
 });
 
@@ -146,11 +115,8 @@ app.get('/api/github/callback', passport.authenticate('github', {
     failureRedirect: '/api-docs',
     session: true
 }), (req, res) => {
-    console.log('GitHub authentication successful!');
-    console.log('Session after successful login:', req.session); 
-    res.redirect('/api-docs'); 
+    res.redirect('/api-docs');
 });
-
 
 // Route imports
 app.use('/', require('./routes/swagger'));
