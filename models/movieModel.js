@@ -5,20 +5,12 @@ const movieSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    description: {
-        type: String,
-        required: true,
-    },
     director: {
         type: String,
         required: true,
     },
-    producer: {
-        type: String,
-        required: true,
-    },
     genre: {
-        type: [String], 
+        type: String, // Corrected to be a single string
         required: true,
     },
     rating: {
@@ -28,22 +20,30 @@ const movieSchema = new mongoose.Schema({
     },
     duration: {
         type: Number,
-        required: false, 
+        required: true,
     },
     poster: {
         type: String,
-        required: false, 
+        required: true,
     },
     country: {
         type: String,
         required: true,
     },
+    producer: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
     releaseDate: {
-        type: Date,
-        required: false, 
+        type: String, // Corrected to be a string
+        required: true,
     },
 }, {
-    timestamps: true
+    timestamps: true 
 });
 
 const Movie = mongoose.model('Movie', movieSchema);
