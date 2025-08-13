@@ -19,9 +19,9 @@ const router = express.Router();
 router.get('/me', isAuthenticated, getUserProfile);
 
 // Update user info
-router.put('/me', isAuthenticated, validateUpdateUser(), updateUser);
+// router.put('/me', isAuthenticated, validateUpdateUser(), updateUser);
 
 // Delete user account
-router.delete('/me', isAuthenticated, validateDeleteUser(), deleteUser);
+// router.delete('/me', isAuthenticated, validateDeleteUser(), deleteUser);
 
 module.exports = router;
