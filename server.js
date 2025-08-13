@@ -147,6 +147,7 @@ app.get('/api/github/callback', passport.authenticate('github', {
     session: true
 }), (req, res) => {
     console.log('GitHub authentication successful!');
+    console.log('Session after successful login:', req.session); 
     res.redirect('/api-docs'); 
 });
 
