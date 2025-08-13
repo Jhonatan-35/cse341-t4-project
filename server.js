@@ -8,6 +8,7 @@ const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
 const session = require('express-session');
 const User = require('./models/userModel');
+const MongoStore = require('connect-mongo');
 
 dotenv.config();
 
@@ -23,18 +24,21 @@ const HOST = process.env.HOST || 'localhost';
 app.use(bodyParser.json());
 app.use(express.json());
 
-// Session config (using a memory store)
+// Session config (using a persistent Mongo store)
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI,
+        collectionName: 'sessions'
+    }),
     cookie: {
-        secure: true,
+        secure: true, // Must be true for HTTPS
         httpOnly: true,
-        maxAge: 1000 * 60 * 60, // 1 hour
+        maxAge: 1000 * 60 * 60 * 24 // 24 hours
     }
 }));
-
 
 // Passport
 app.use(passport.initialize());
