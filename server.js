@@ -27,6 +27,7 @@ const HOST = process.env.HOST || 'localhost'
 app.use(bodyParser.json());
 app.use(express.json());
 
+
 // Session config (using a persistent Mongo store)
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -37,8 +38,9 @@ app.use(session({
         collectionName: 'sessions'
     }),
     cookie: {
-        secure: true, // Must be true for HTTPS
-        httpOnly: true,
+        secure: true,      // Must be true for HTTPS on Render
+        httpOnly: true,    // Good practice
+        sameSite: 'none',  // THIS IS THE FIX for cross-site requests
         maxAge: 1000 * 60 * 60 * 24 // 24 hours
     }
 }));
