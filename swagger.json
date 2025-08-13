@@ -6,11 +6,11 @@
     "version": "1.0.0"
   },
   "host": [
-    "cse341-t4-project.onrender.com"
+    "localhost:3000"
   ],
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/api": {
@@ -19,16 +19,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          }
-        }
-      }
-    },
-    "/login": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
           }
         }
       }

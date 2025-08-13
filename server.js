@@ -8,42 +8,32 @@ const passport = require('passport');
 const GitHubStrategy = require('passport-github2').Strategy;
 const session = require('express-session');
 const User = require('./models/userModel');
-const SQLiteStore = require('connect-sqlite3')(session);
 
 dotenv.config();
+
+console.log('Using GITHUB_CALLBACK_URL:', process.env.GITHUB_CALLBACK_URL);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
 
+// ... rest of your code
+
 // Middleware
 app.use(bodyParser.json());
+app.use(express.json());
 
-app.set('trust proxy', 1); // Trust the proxy from Render
-
-// Session config (with SQLite store)
+// Session config (using a memory store)
 app.use(session({
-    store: new SQLiteStore({
-        db: 'sessions.sqlite',
-        dir: './db',
-    }),
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    // cookie: {
-    //     secure: false, 
-    //     httpOnly: true,
-    //     maxAge: 1000 * 60 * 60,
-    // }
-
     cookie: {
-    secure: true, // IMPORTANT: Now that you are on HTTPS
-    httpOnly: true,
-    maxAge: 1000 * 60 * 60, // 1 hour
-    sameSite: 'lax' // Recommended for security
-},
+        secure: true,
+        httpOnly: true,
+        maxAge: 1000 * 60 * 60, // 1 hour
+    }
 }));
-
 
 
 // Passport
@@ -52,19 +42,9 @@ app.use(passport.session());
 
 // CORS
 app.use(cors({
-    origin: "https://cse341-t4-project-9zue.onrender.com",
+    origin: ["https://cse341-t4-project.onrender.com"],
     credentials: true
 }));
-
-// Preflight handling
-// app.use((req, res, next) => {
-//     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-//     res.header("Access-Control-Allow-Credentials", "true");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Z-key");
-//     res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
-//     if (req.method === "OPTIONS") return res.sendStatus(200);
-//     next();
-// });
 
 // GitHub OAuth
 passport.use(new GitHubStrategy({
@@ -75,19 +55,22 @@ passport.use(new GitHubStrategy({
 }, async (accessToken, refreshToken, profile, done) => {
     try {
         const email = profile.emails?.[0]?.value;
+        console.log('GitHub profile email:', email);
+
         if (!email) {
+            console.error('Error: Email not available from GitHub');
             return done(new Error('Email not available from GitHub'));
         }
 
         let user = await User.findOne({ email });
+        console.log('User found in DB:', user);
 
         if (user) {
-            // User already exists, update their profile information if needed
-            // For example, update the username
             user.username = profile.username || 'unknown';
+            user.firstname = profile.displayName || profile.username || 'GitHub User'; // Corrected
             await user.save();
+            console.log('Existing user updated:', user);
         } else {
-            // User does not exist, create a new one
             user = await User.create({
                 email,
                 username: profile.username || 'unknown',
@@ -96,15 +79,28 @@ passport.use(new GitHubStrategy({
                 phone: '',
                 birthday: ''
             });
+            console.log('New user created:', user);
         }
-        
+
+        if (!user || !user._id) {
+            console.error('Fatal Error: User object is invalid or missing _id', user);
+            return done(new Error('Invalid user object returned from database.'));
+        }
+
         return done(null, user);
+
     } catch (err) {
+        console.error('Error during GitHub authentication:', err);
         return done(err);
     }
 }));
 
-passport.serializeUser((user, done) => done(null, user._id));
+
+// Passport Serialization and Deserialization
+passport.serializeUser((user, done) => {
+    done(null, user._id);
+});
+
 passport.deserializeUser(async (id, done) => {
     try {
         const user = await User.findById(id);
@@ -114,28 +110,8 @@ passport.deserializeUser(async (id, done) => {
     }
 });
 
-passport.deserializeUser(async (id, done) => {
-    try {
-        console.log('Deserializing user with ID:', id);
-        const user = await User.findById(id);
-        if (user) {
-            console.log('User found in DB:', user.email);
-            done(null, user);
-        } else {
-            console.log('User not found in DB for ID:', id);
-            done(null, null); // Pass null for no user
-        }
-    } catch (err) {
-        console.error('Error during deserialization:', err);
-        done(err);
-    }
-});
 
 // Routes
-// app.get('/', (req, res) => {
-//     res.send(req.user ? `Logged in as ${req.user.firstname}` : "Logged out");
-// });
-
 app.get('/', (req, res) => {
     console.log('Accessing root route. Is user authenticated?', !!req.user);
     if (req.user) {
@@ -146,21 +122,16 @@ app.get('/', (req, res) => {
 
 app.get('/login', passport.authenticate('github', { scope: ['user:email'] }));
 
-// app.get('/api/github/callback', passport.authenticate('github', {
-//     failureRedirect: '/api-docs',
-//     session: true
-// }), (req, res) => res.redirect('/'));
-
 app.get('/api/github/callback', passport.authenticate('github', {
     failureRedirect: '/api-docs',
     session: true
 }), (req, res) => {
     console.log('GitHub authentication successful!');
-    console.log('User serialized:', req.user._id);
     res.redirect('/');
 });
 
-// Route imports (unchanged from old)
+
+// Route imports
 app.use('/', require('./routes/swagger'));
 app.use('/', require('./routes/index'));
 app.use('/api/users', require('./routes/userRoutes'));
