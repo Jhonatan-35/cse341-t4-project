@@ -27,7 +27,7 @@ app.use(express.json());
 
 // CORS should be placed before session and passport middleware
 app.use(cors({
-    origin: ["https://cse341-t4-project-9zue.onrender.com"],
+    origin: ["https://cse341-t4-project.onrender.com"],
     credentials: true
 }));
 
