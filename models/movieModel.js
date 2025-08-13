@@ -9,20 +9,16 @@ const movieSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    releaseDate: {
-        type: Date,
-        required: true,
-    },
-    genre: {
-        type: [String],
+    director: {
+        type: String,
         required: true,
     },
     producer: {
         type: String,
         required: true,
     },
-    country: {
-        type: String,
+    genre: {
+        type: [String], 
         required: true,
     },
     rating: {
@@ -30,8 +26,24 @@ const movieSchema = new mongoose.Schema({
         min: 0,
         max: 10,
     },
+    duration: {
+        type: Number,
+        required: false, 
+    },
+    poster: {
+        type: String,
+        required: false, 
+    },
+    country: {
+        type: String,
+        required: true,
+    },
+    releaseDate: {
+        type: Date,
+        required: false, 
+    },
 }, {
-    timestamps: true    
+    timestamps: true
 });
 
 const Movie = mongoose.model('Movie', movieSchema);
