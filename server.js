@@ -14,11 +14,14 @@ dotenv.config();
 
 console.log('Using GITHUB_CALLBACK_URL:', process.env.GITHUB_CALLBACK_URL);
 
-const app = express();
-const PORT = process.env.PORT || 3000;
-const HOST = process.env.HOST || 'localhost';
+const app = express(); // The app object is created here
 
-// ... rest of your code
+app.set('trust proxy', 1); 
+
+const PORT = process.env.PORT || 3000;
+const HOST = process.env.HOST || 'localhost'
+
+
 
 // Middleware
 app.use(bodyParser.json());
