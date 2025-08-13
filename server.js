@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 
-// Session config (using a persistent Mongo store)
+
 // Session config (using a persistent Mongo store)
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -108,14 +108,24 @@ passport.use(new GitHubStrategy({
 
 // Passport Serialization and Deserialization
 passport.serializeUser((user, done) => {
+    console.log('Serializing user with ID:', user._id);
     done(null, user._id);
 });
 
 passport.deserializeUser(async (id, done) => {
     try {
+        console.log('Deserializing user with ID:', id);
         const user = await User.findById(id);
+        
+        if (user) {
+            console.log('User found in deserializeUser:', user._id);
+        } else {
+            console.log('User NOT found in deserializeUser for ID:', id);
+        }
+
         done(null, user);
     } catch (err) {
+        console.error('Error during deserialization:', err);
         done(err);
     }
 });
